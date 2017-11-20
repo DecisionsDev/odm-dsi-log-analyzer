@@ -21,6 +21,7 @@ public class DSIRecord implements Comparable<DSIRecord> {
         public static final int TYPE_WARNING = 8;
         public static final int TYPE_ERROR = 9;
         public static final int TYPE_STDERR = 10;
+        public static final int TYPE_STDOUT = 11;
         
         public DSIRecord(LocalDateTime time,
                          String threadId,
@@ -85,6 +86,8 @@ public class DSIRecord implements Comparable<DSIRecord> {
                         return TYPE_ERROR;       
                 case "R":
                         return TYPE_STDERR;
+                case "O":
+                        return TYPE_STDOUT;
                 }
                 
                 return -1;
