@@ -29,7 +29,8 @@ public class DSIEventReport {
         private void print(DSIRecord rec) {
                 String msg;
                 Matcher m;
-                final Pattern saveMementoPattern = Pattern.compile(".*saveMemento\\(EngineMemento\\) MementoKey id=([^ ]+):\\s+(.*)");
+                final Pattern saveMementoPattern = Pattern.compile(".*saveMemento\\(EngineMemento\\) MementoKey id=([^ ]+):\\s+(.*)",
+                                                                   Pattern.DOTALL);
                 final Pattern getMementoPattern = Pattern.compile(".*getMemento MementoKey id=([^ ]+):\\s+(.*)");
                 final Pattern takePattern = Pattern.compile(".*take\\(\\): key=.*uuid=([^\\]]+)\\].*");
                 final Pattern removingPattern = Pattern.compile(".*remove\\(\\): key.*uuid=([^\\]]+)\\].*");
@@ -52,7 +53,7 @@ public class DSIEventReport {
                 m = saveMementoPattern.matcher(msg);
                 if (m.matches()) {
                         if (mementoKey == null || m.group(1).contains(mementoKey)) {
-                                msg = "Save " + m.group(1) + "\n\t\t" + m.group(2);
+                                msg = "Save " + m.group(1);
                                 System.out.println(format(rec.getTime()) + " " + rec.getThreadId() + " " + msg);
                                 return ;
                         }
