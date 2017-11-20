@@ -38,13 +38,13 @@ public class DSIEventReport {
                 msg = rec.getMessage();
                                 
                 if (msg.contains("Starting Event Processor")) {
-                        msg = "Start " + eventId;
+                        msg = "Start Event Processor " + eventId;
                         System.out.println(format(rec.getTime()) + " " + rec.getThreadId() + " " + msg);
                         return ;
                 }
                 
                 if (msg.contains("Completed Event Processor")) {
-                        msg = "End " + eventId;
+                        msg = "Completed Event Processor " + eventId;
                         System.out.println(format(rec.getTime()) + " " + rec.getThreadId() + " " + msg);
                         return ;
                 } 
